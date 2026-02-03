@@ -1,10 +1,14 @@
+from datetime import datetime
+
 while True:
     try:
-        opcao = int(input("\n=== SISTEMA DE SUPORTE TI ===\n"
-                "1 - Problema de Internet\n"
-                "2 - Computador Lento\n"
-                "3 - Erro de Software\n"
-                "4 - Outro\n"))
+        opcao = int(input(
+            "\n=== SISTEMA DE SUPORTE TI ===\n"
+            "1 - Problema de Internet\n"
+            "2 - Computador Lento\n"
+            "3 - Erro de Software\n"
+            "4 - Outro\n"
+        ))
 
         match opcao:
             case 1:
@@ -27,8 +31,11 @@ nome = input("Nome do usuário: ")
 setor = input("Setor: ")
 descricao = input("Descreva o problema: ")
 
+data_hora = datetime.now().strftime("%d/%m/%Y %H:%M")
+
 with open("registros_suporte.txt", "a", encoding="utf-8") as arquivo:
     arquivo.write("=== NOVO ATENDIMENTO ===\n")
+    arquivo.write(f"Data/Hora: {data_hora}\n")
     arquivo.write(f"Usuário: {nome}\n")
     arquivo.write(f"Setor: {setor}\n")
     arquivo.write(f"Tipo: {tipo}\n")
